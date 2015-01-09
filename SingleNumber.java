@@ -8,12 +8,12 @@
 
 public class Solution {
     public int singleNumber(int[] A) {
-        int x = 0;
-        for(int i: A){
-            x = x ^ i;
+        int res = 0;
+        for(int a: A){
+            res = res ^ a;
             //XOR algorithm, in binary, same value get 0 and different value get 1.
             //finally twice number all become 0 only left the single time number.
         }
-        return x;
+        return res;
     }
 }
