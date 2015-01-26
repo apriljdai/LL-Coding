@@ -1,3 +1,13 @@
+/*
+ Binary Tree Inorder Traversal
+ 
+ Given a binary tree, return the inorder traversal of its nodes' values.
+ 
+ For example:
+ Given binary tree {1,#,2,3},
+ return [1,3,2].
+ */
+
 /**
  * Definition for binary tree
  * public class TreeNode {
@@ -9,14 +19,12 @@
  */
 public class Solution {
     public ArrayList<Integer> inorderTraversal(TreeNode root) {
-        ArrayList<Integer> returnNumber = new ArrayList<Integer>();
-        if(root == null)
-            return returnNumber;
-        else{
-            returnNumber.addAll(inorderTraversal(root.left));
-            returnNumber.add(root.val);
-            returnNumber.addAll(inorderTraversal(root.right));
-        }
-        return returnNumber;
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if (root == null)
+            return res;
+        res.addAll(inorderTraversal(root.left));
+        res.add(root.val);
+        res.addAll(inorderTraversal(root.right));
+        return res;
     }
 }
