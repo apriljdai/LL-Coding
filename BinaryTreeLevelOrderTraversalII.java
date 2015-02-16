@@ -1,3 +1,23 @@
+/*
+ Binary Tree Level Order Traversal II
+ 
+ Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
+ 
+ For example:
+ Given binary tree {3,9,20,#,#,15,7},
+    3
+   / \
+  9  20
+    /  \
+   15   7
+ return its bottom-up level order traversal as:
+ [
+ [15,7],
+ [9,20],
+ [3]
+ ]
+ */
+
 /**
  * Definition for binary tree
  * public class TreeNode {
@@ -9,22 +29,26 @@
  */
 public class Solution {
     public ArrayList<ArrayList<Integer>> levelOrderBottom(TreeNode root) {
-        ArrayList<ArrayList<Integer>> levels = new ArrayList<ArrayList<Integer>>();
-        reverseLevel(root, 1, levels);
-        //reverse all the things in the arraylist
-        Collections.reverse(levels);
-        return levels;
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if (root == null)
+            return res;
+        
+        eachLevel(root, res, 1);
+        Collections.reverse(res);
+        return res;
     }
-    private void reverseLevel(TreeNode a, int height, ArrayList<ArrayList<Integer>> levels){
-        ArrayList<Integer> subLevel = new ArrayList<Integer>();
-        if (a == null)
+    public void eachLevel(TreeNode root, ArrayList<ArrayList<Integer>> res, int depth){
+        if (root == null)
             return;
-        subLevel.add(a.val);
-        if(height >  levels.size())
-            levels.add(subLevel);
+        
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        temp.add(root.val);
+        if (res.size() < depth)
+            res.add(temp);
         else
-            levels.get(height - 1).add(a.val);
-        reverseLevel(a.left, height + 1, levels);
-        reverseLevel(a.right, height + 1, levels);
+            res.get(depth - 1).add(root.val);
+        eachLevel(root.left, res, depth + 1);
+        eachLevel(root.right, res, depth + 1);
     }
+    
 }
