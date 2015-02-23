@@ -1,3 +1,11 @@
+/*
+ Anagrams
+ 
+ Given an array of strings, return all groups of strings that are anagrams.
+ 
+ Note: All inputs will be in lower-case.
+ */
+
 public class Solution {
     public ArrayList<String> anagrams(String[] strs) {
         ArrayList<String> result = new ArrayList<String>();
