@@ -29,7 +29,7 @@ public class SortColors{
 				A[idx1++] = 1;
 				A[idx0++] = 0;
 			}
-			if (A[i] == 1){
+			else if (A[i] == 1){
 				A[i] = 2;
 				A[idx1++] = 1;
 			}

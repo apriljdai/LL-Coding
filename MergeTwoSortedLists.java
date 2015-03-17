@@ -1,3 +1,9 @@
+/*
+ Merge Two Sorted Lists
+ 
+ Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+ */
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -25,14 +31,10 @@ public class Solution {
             }
             head = head.next;
         }
-        if(l1 != null){
+        if(l1 != null)
             head.next = l1;
-            l1 = l1.next;
-        }
-        if(l2 != null){
+        if(l2 != null)
             head.next = l2;
-            l2 = l2.next;
-        }
         return mergeList.next;
     }
 }
