@@ -1,3 +1,12 @@
+/*
+ Single Number II
+ 
+ Given an array of integers, every element appears three times except for one. Find that single one.
+ 
+ Note:
+ Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+ */
+
 public class Solution {
     public int singleNumber(int[] A) {
         HashMap<Integer, Integer> singleNumber = new HashMap<Integer, Integer>();
@@ -15,3 +24,19 @@ public class Solution {
         return 0;
     }
 }
+//runtime: O(N), memory: O(N)
+
+public class Solution {
+    public int singleNumber(int[] A) {
+        int once = 0, twice = 0, three = 0;
+        for (int i = 0; i < A.length; i++){
+            twice |= once & A[i];
+            once ^= A[i];
+            three = once & twice;
+            once &= ~three;
+            twice &= ~three;
+        }
+        return once;
+    }
+}
+//runtime: O(N), memory: O(1)
