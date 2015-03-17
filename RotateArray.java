@@ -12,6 +12,25 @@ Hint:
 Could you do it in-place with O(1) extra space?
 */
 
+//method 1: creat new array
+public class Solution {
+    public void rotate(int[] nums, int k) {
+        if (nums == null || nums.length == 0 || k == 0)
+            return;
+        if (k > nums.length)
+            k %= nums.length;
+        int[] res = new int[nums.length];
+        for (int i = 0; i < nums.length; i++){
+            int temp = (i + k) % nums.length;
+            res[temp] = nums[i];
+        }
+        for (int i = 0; i < nums.length; i++){
+            nums[i] = res[i];
+        }
+    }
+}
+
+//method 3: in-place
 public class Solution {
     public void rotate(int[] nums, int k) {
         if (nums == null || nums.length == 0 || k == 0)
