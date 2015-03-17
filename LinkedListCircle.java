@@ -19,18 +19,14 @@
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        if(head == null)
+        if (head == null)
             return false;
         ListNode fast = head;
         ListNode slow = head;
-        while(fast != null){
-            //must confirm current first, then check if next exists.
-            if(fast.next != null)
-                fast = fast.next.next;
-            else
-                return false;
+        while (fast.next != null && fast.next.next != null){
+            fast = fast.next.next;
             slow = slow.next;
-            if(slow == fast)
+            if (fast == slow)
                 return true;
         }
         return false;

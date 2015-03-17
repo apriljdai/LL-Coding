@@ -9,13 +9,10 @@
  */
 public class Solution {
     public int maxDepth(TreeNode root) {
-        if(root == null)
+        if (root == null)
             return 0;
-        int lResult = maxDepth(root.left);
-        int rResult = maxDepth(root.right);
-        if(lResult > rResult)
-            return lResult + 1;
-        else
-            return rResult + 1;
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        return Math.max(left, right) + 1;
     }
 }
